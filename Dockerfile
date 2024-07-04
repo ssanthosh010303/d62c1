@@ -1,0 +1,11 @@
+FROM postgres:latest
+
+ARG DOCKER_POSTGRES_PASSWORD=default-unsafe
+
+ENV POSTGRES_DB=sakthi
+ENV POSTGRES_USER=sakthi
+ENV POSTGRES_PASSWORD=$DOCKER_POSTGRES_PASSWORD
+
+COPY ./init.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 5432
